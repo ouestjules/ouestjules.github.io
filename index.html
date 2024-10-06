@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body>
+  <div class="Semaine">
+    <h1>Semaine Paire</h1>
+  </div>
+  
+  <div class="calendar-grid">
+    <div>Lundi matin chez Maman avec Francoise</div>
+    <div>Mardi matin à l'école avec Papa</div>
+    <div>Mercredi matin chez Papa</div>
+    <div>Jeudi matin chez Maman</div>
+    <div>Vendredi matin chez Maman</div>
+    <div>Lundi soir chez Papa avec Clara</div>
+    <div>Mardi soir chez Papa avec Clara</div>
+    <div>Mercredi soir chez Maman</div>
+    <div>Jeudi soir chez Maman</div>
+    <div>Vendredi 13h chez Papa avec Francoise</div>
+    <!-- Répéter pour chaque jour -->
+  </div>
+  <div class="Semaine">
+    <h1>Semaine Impaire</h1>
+  </div>
+
+  <div class="calendar-grid">
+    <div>Lundi matin chez Papa avec Francoise</div>
+    <div>Mardi matin chez Maman</div>
+    <div>Mercredi matin chez Maman</div>
+    <div>Jeudi matin 8h10 à l'école</div>
+    <div>Vendredi matin  8h10 à l'école</div>
+    <div>Lundi soir chez Maman avec Clara</div>
+    <div>Mardi soir chez Maman</div>
+    <div>Mercredi soir chez Papa avec Clara</div>
+    <div>Jeudi soir chez Papa avec Clara</div>
+    <div>Vendredi 13h chez Maman avec Francoise</div>
+    <!-- Répéter pour chaque jour -->
+  </div>
+</body>
+
+<style>
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  .calendar-grid div {
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+  }
+  .Semaine {
+  margin-bottom: 20px;
+}
+</style>
+</html>
