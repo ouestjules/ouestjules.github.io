@@ -1,38 +1,116 @@
 <!DOCTYPE html>
 <html lang="fr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .calendar-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .Semaine {
+      text-align: center;
+      color: white;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .Semaine.paire {
+      background-color: #4CAF50;
+    }
+
+    .Semaine.impaire {
+      background-color: #2196F3;
+    }
+
+    .calendar-grid.paire {
+      background-color: #e8f5e9;
+    }
+
+    .calendar-grid.impaire {
+      background-color: #e3f2fd;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-size: 16px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .calendar-grid div {
+      background-color: #e0f7fa;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .calendar-grid div:hover {
+      background-color: #b2ebf2;
+    }
+
+    /* Style pour le jour actuel */
+    .current-day {
+      background-color: #ffcccb; /* Couleur de fond spécifique pour le jour actuel */
+      border: 2px solid #ff0000; /* Bordure rouge pour le rendre encore plus visible */
+    }
+
+    @media (max-width: 600px) {
+      .calendar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div class="Semaine">
-    <h1>Semaine Paire</h1>
-  </div>
-  
-  <div class="calendar-grid">
-    <div id="lundi-matin-paire">Lundi matin chez Maman avec Francoise</div>
-    <div id="mardi-matin-paire">Mardi matin à l'école avec Papa</div>
-    <div id="mercredi-matin-paire">Mercredi matin chez Papa</div>
-    <div id="jeudi-matin-paire">Jeudi matin chez Maman</div>
-    <div id="vendredi-matin-paire">Vendredi matin chez Maman</div>
-    <div id="lundi-soir-paire">Lundi soir chez Papa avec Clara</div>
-    <div id="mardi-soir-paire">Mardi soir chez Papa avec Clara</div>
-    <div id="mercredi-soir-paire">Mercredi soir chez Maman</div>
-    <div id="jeudi-soir-paire">Jeudi soir chez Maman</div>
-    <div id="dimanche-soir-paire">Vendredi 13h chez Papa avec Francoise</div>
-  </div>
+  <div class="calendar-container">
+    <div class="Semaine paire">
+      <h1>Semaine Paire</h1>
+    </div>
+    
+    <div class="calendar-grid paire">
+      <div id="lundi-matin-paire">Lundi matin chez Maman avec Francoise</div>
+      <div id="lundi-soir-paire">Lundi soir chez Papa avec Clara</div>
+      <div id="mardi-matin-paire">Mardi matin à l'école avec Papa</div>
+      <div id="mardi-soir-paire">Mardi soir chez Papa avec Clara</div>
+      <div id="mercredi-matin-paire">Mercredi matin chez Papa</div>
+      <div id="mercredi-soir-paire">Mercredi soir chez Maman</div>
+      <div id="jeudi-matin-paire">Jeudi matin chez Maman</div>
+      <div id="jeudi-soir-paire">Jeudi soir chez Maman</div>
+      <div id="vendredi-matin-paire">Vendredi matin chez Maman</div>
+      <div id="dimanche-soir-paire">Vendredi 13h chez Papa avec Francoise</div>
+    </div>
 
-  <div class="Semaine">
-    <h1>Semaine Impaire</h1>
-  </div>
+    <div class="Semaine impaire">
+      <h1>Semaine Impaire</h1>
+    </div>
 
-  <div class="calendar-grid">
-    <div id="lundi-matin-impaire">Lundi matin chez Papa avec Francoise</div>
-    <div id="mardi-matin-impaire">Mardi matin chez Maman</div>
-    <div id="mercredi-matin-impaire">Mercredi matin chez Maman</div>
-    <div id="jeudi-matin-impaire">Jeudi matin 8h10 à l'école</div>
-    <div id="vendredi-matin-impaire">Vendredi matin 8h10 à l'école</div>
-    <div id="lundi-soir-impaire">Lundi soir chez Maman avec Clara</div>
-    <div id="mardi-soir-impaire">Mardi soir chez Maman</div>
-    <div id="mercredi-soir-impaire">Mercredi soir chez Papa avec Clara</div>
-    <div id="jeudi-soir-impaire">Jeudi soir chez Papa avec Clara</div>
-    <div id="dimanche-soir-impaire">Vendredi 13h chez Maman avec Francoise</div>
+    <div class="calendar-grid impaire">
+      <div id="lundi-matin-impaire">Lundi matin chez Papa avec Francoise</div>
+      <div id="lundi-soir-impaire">Lundi soir chez Maman avec Clara</div>
+      <div id="mardi-matin-impaire">Mardi matin chez Maman</div>
+      <div id="mardi-soir-impaire">Mardi soir chez Maman</div>
+      <div id="mercredi-matin-impaire">Mercredi matin chez Maman</div>
+      <div id="mercredi-soir-impaire">Mercredi soir chez Papa avec Clara</div>
+      <div id="jeudi-matin-impaire">Jeudi matin 8h10 à l'école</div>
+      <div id="jeudi-soir-impaire">Jeudi soir chez Papa avec Clara</div>
+      <div id="vendredi-matin-impaire">Vendredi matin 8h10 à l'école</div>
+      <div id="dimanche-soir-impaire">Vendredi 13h chez Maman avec Francoise</div>
+    </div>
   </div>
 
   <script>
@@ -73,41 +151,6 @@
     if (afternoonElement) {
       afternoonElement.classList.add("current-day");
     }
-
-    // // Masquer les éléments qui ne correspondent pas à la semaine actuelle
-    // const allElements = document.querySelectorAll('.calendar-grid div');
-    // allElements.forEach(element => {
-    //   if (!element.id.includes(weekSuffix)) {
-    //     element.style.display = 'none';
-    //   }
-    // });
   </script>
 </body>
-
-<style>
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    font-size: 14px;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  .calendar-grid div {
-    background-color: #e0e0e0;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .Semaine {
-    margin-bottom: 20px;
-  }
-
-  /* Style pour le jour actuel */
-  .current-day {
-    background-color: #ffcccb; /* Couleur de fond spécifique pour le jour actuel */
-    border: 2px solid #ff0000; /* Bordure rouge pour le rendre encore plus visible */
-  }
-</style>
 </html>
