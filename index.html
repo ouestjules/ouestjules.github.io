@@ -6,35 +6,82 @@
   </div>
   
   <div class="calendar-grid">
-    <div>Lundi matin chez Maman avec Francoise</div>
-    <div>Mardi matin à l'école avec Papa</div>
-    <div>Mercredi matin chez Papa</div>
-    <div>Jeudi matin chez Maman</div>
-    <div>Vendredi matin chez Maman</div>
-    <div>Lundi soir chez Papa avec Clara</div>
-    <div>Mardi soir chez Papa avec Clara</div>
-    <div>Mercredi soir chez Maman</div>
-    <div>Jeudi soir chez Maman</div>
-    <div>Vendredi 13h chez Papa avec Francoise</div>
-    <!-- Répéter pour chaque jour -->
+    <div id="lundi-matin-paire">Lundi matin chez Maman avec Francoise</div>
+    <div id="mardi-matin-paire">Mardi matin à l'école avec Papa</div>
+    <div id="mercredi-matin-paire">Mercredi matin chez Papa</div>
+    <div id="jeudi-matin-paire">Jeudi matin chez Maman</div>
+    <div id="vendredi-matin-paire">Vendredi matin chez Maman</div>
+    <div id="lundi-soir-paire">Lundi soir chez Papa avec Clara</div>
+    <div id="mardi-soir-paire">Mardi soir chez Papa avec Clara</div>
+    <div id="mercredi-soir-paire">Mercredi soir chez Maman</div>
+    <div id="jeudi-soir-paire">Jeudi soir chez Maman</div>
+    <div id="dimanche-soir-paire">Vendredi 13h chez Papa avec Francoise</div>
   </div>
+
   <div class="Semaine">
     <h1>Semaine Impaire</h1>
   </div>
 
   <div class="calendar-grid">
-    <div>Lundi matin chez Papa avec Francoise</div>
-    <div>Mardi matin chez Maman</div>
-    <div>Mercredi matin chez Maman</div>
-    <div>Jeudi matin 8h10 à l'école</div>
-    <div>Vendredi matin  8h10 à l'école</div>
-    <div>Lundi soir chez Maman avec Clara</div>
-    <div>Mardi soir chez Maman</div>
-    <div>Mercredi soir chez Papa avec Clara</div>
-    <div>Jeudi soir chez Papa avec Clara</div>
-    <div>Vendredi 13h chez Maman avec Francoise</div>
-    <!-- Répéter pour chaque jour -->
+    <div id="lundi-matin-impaire">Lundi matin chez Papa avec Francoise</div>
+    <div id="mardi-matin-impaire">Mardi matin chez Maman</div>
+    <div id="mercredi-matin-impaire">Mercredi matin chez Maman</div>
+    <div id="jeudi-matin-impaire">Jeudi matin 8h10 à l'école</div>
+    <div id="vendredi-matin-impaire">Vendredi matin 8h10 à l'école</div>
+    <div id="lundi-soir-impaire">Lundi soir chez Maman avec Clara</div>
+    <div id="mardi-soir-impaire">Mardi soir chez Maman</div>
+    <div id="mercredi-soir-impaire">Mercredi soir chez Papa avec Clara</div>
+    <div id="jeudi-soir-impaire">Jeudi soir chez Papa avec Clara</div>
+    <div id="dimanche-soir-impaire">Vendredi 13h chez Maman avec Francoise</div>
   </div>
+
+  <script>
+    // Obtenir la date actuelle
+    const today = new Date();
+    //debug add days to test date
+    //today.setDate(today.getDate() +1);
+    const daysOfWeek = [
+      "dimanche",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi"
+    ];
+
+    // Obtenir le jour actuel (0 pour dimanche, 1 pour lundi, etc.)
+    const currentDay = daysOfWeek[today.getDay()];
+
+    // Calculer la semaine actuelle (paire ou impaire)
+    const oneJan = new Date(today.getFullYear(), 0, 1);
+    const numberOfDays = Math.floor((today - oneJan) / (24 * 60 * 60 * 1000));
+    const currentWeekNumber = Math.ceil((numberOfDays + oneJan.getDay() + 1) / 7);
+    const isEvenWeek = currentWeekNumber % 2 === 0;
+
+    // Déterminer le suffixe (paire ou impaire) à utiliser dans les IDs
+    const weekSuffix = isEvenWeek ? "-paire" : "-impaire";
+
+    // Sélectionner les divs correspondant au jour actuel (matin et soir)
+    const morningElement = document.getElementById(currentDay + "-matin" + weekSuffix);
+    const afternoonElement = document.getElementById(currentDay + "-soir" + weekSuffix);
+
+    // Ajouter la classe CSS pour les mettre en évidence
+    if (morningElement) {
+      morningElement.classList.add("current-day");
+    }
+    if (afternoonElement) {
+      afternoonElement.classList.add("current-day");
+    }
+
+    // // Masquer les éléments qui ne correspondent pas à la semaine actuelle
+    // const allElements = document.querySelectorAll('.calendar-grid div');
+    // allElements.forEach(element => {
+    //   if (!element.id.includes(weekSuffix)) {
+    //     element.style.display = 'none';
+    //   }
+    // });
+  </script>
 </body>
 
 <style>
@@ -42,6 +89,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    font-size: 14px;
     background-color: #f9f9f9;
     padding: 20px;
   }
@@ -51,8 +99,15 @@
     padding: 20px;
     text-align: center;
   }
+
   .Semaine {
-  margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+  }
+
+  /* Style pour le jour actuel */
+  .current-day {
+    background-color: #ffcccb; /* Couleur de fond spécifique pour le jour actuel */
+    border: 2px solid #ff0000; /* Bordure rouge pour le rendre encore plus visible */
+  }
 </style>
 </html>
